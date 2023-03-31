@@ -136,7 +136,7 @@
 }
 
 .container .box {
-    width: 31.975em;
+    width: 40.975em;
     height: 17.575em;
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.074);
@@ -190,10 +190,10 @@
 
 .linear_wipe {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 6rem;
+    /* font-size: 6rem; */
     font-weight: 100;
     letter-spacing: 2px;
-    text-align: center;
+    /* text-align: center; */
     color: #f35626;
     background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
     background-clip: text;
@@ -213,13 +213,13 @@
 
 .inner_wipe {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 3rem;
+    /* font-size: 3rem; */
     font-weight: 100;
-    letter-spacing: 2px;
-    text-align: center;
+    /* letter-spacing: 2px; */
+    /* text-align: center; */
     color: #f38511;
     background-image: -webkit-linear-gradient(45deg, #18ef4e, #0cff9a);
-    background-clip: text;
+    /* background-clip: text; */
     -webkit-text-fill-color: transparent;
     animation: hue 12s infinite linear;
 }

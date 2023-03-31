@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 const Navbar = () => {
     return (
-        <div>
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div className='bg-gray-900'>
+            <div className="bg-gray-900 container w-[90%] mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                 <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-                    <span className="ml-3 text-xl">Hunting Coder</span>
+                    <span className={` ml-3 text-[1.95rem] font-bold text-yellow-100`}>Hunting Coder</span>
                 </a>
                 <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center list-none">
                     <Link href={`/`} ><li className={`${styles.animate} mr-5 hover:text-white`}>Home</li></Link>
