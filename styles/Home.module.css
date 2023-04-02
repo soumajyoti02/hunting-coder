@@ -148,6 +148,12 @@
     overflow: auto;
 }
 
+@media (max-width: 767px) {
+    .container .box {
+        width: 21.975em;
+    }
+}
+
 .container .box {
     display: flex;
     flex-direction: column;

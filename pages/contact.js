@@ -9,11 +9,15 @@ const Contact = () => {
 	const [address, setAddress] = useState('')
 	const [desc, setDesc] = useState('')
 
+	// Define a function called handleSubmit that will be called when a form is submitted
 	const handleSubmit = async (e) => {
+		// Prevent the default behavior of the form submission which is to reload the page
 		e.preventDefault()
-		console.log(name, email, phone, desc, address)
 
+		// Create an object called data with properties name, email, phone, desc, and address, and set their values to the corresponding variables
 		const data = { name, email, phone, desc, address }
+
+		// Use the fetch API to send a POST request to the URL http://localhost:3000/api/postcontact with the data object as the body of the request
 		try {
 			const res = await fetch(`http://localhost:3000/api/postcontact`, {
 				method: 'POST',
@@ -23,19 +27,25 @@ const Contact = () => {
 				body: JSON.stringify(data)
 			})
 
+			// Get the response body as text and log a success message to the console
 			const response = res.text()
 			console.log('Success')
+
+			// Display an alert to the user with the message "Thanks For Contacting Us"
 			alert("Thanks For Contacting Us")
+
+			// Reset the values of name, email, phone, address, and desc to empty strings
 			setName('')
 			setEmail('')
 			setPhone('')
 			setAddress('')
 			setDesc('')
 		} catch (error) {
-			console.log(`Error occured`)
+			// If an error occurs, log an error message to the console
+			console.log(`Error occurred: ${error}`)
 		}
-
 	}
+
 
 	const handleChange = (e) => {
 		if (e.target.name === 'name') {
@@ -62,7 +72,7 @@ const Contact = () => {
 				<div className="container px-5 py-24 mx-auto">
 					<div className="flex flex-col text-center w-full mb-12">
 						<h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Contact Us</h1>
-						<p className="lg:w-2/3 mx-auto leading-relaxed text-base">Get in Touch with the Coding Community - Let's Connect and Code Together. Whether you have a question, comment, or just want to say hello, we'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
+						<p className="lg:w-2/3 mx-auto leading-relaxed text-base">Get in Touch with the Coding Community - Lets Connect and Code Together. Whether you have a question, comment, or just want to say hello, we would love to hear from you! Fill out the form below and we will get back to you as soon as possible.</p>
 					</div>
 					<form action="" onSubmit={handleSubmit}>
 						<div className="lg:w-1/2 md:w-2/3 mx-auto">
