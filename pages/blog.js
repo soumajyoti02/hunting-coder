@@ -1,11 +1,18 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import * as fs from 'fs';
 
 /*
 Step 1: Collect all the files from blogdata directory
 Step 2: Iterate through them and Display them
 
-*/
+To switch to using getServerSideProps:
+    <*> You need to uncomment the code for getServerSideProps.
+    <*> You need to comment out the code for getStaticProps.
+
+To generate static pages:
+    <*> You need to use the functions getStaticProps.
+    <*> You need to comment out the code for getServerSideProps.
 
 export const getServerSideProps = async (context) => {
     const res = await fetch('http://localhost:3000/api/blogs')
@@ -17,6 +24,32 @@ export const getServerSideProps = async (context) => {
         }
     }
 }
+
+*/
+export const getStaticProps = async (context) => {
+    // Read the directory "blogdata" and get an array of file names
+    const data = await fs.promises.readdir("blogdata");
+
+    // Create an empty array to store all blog data
+    const allBlogs = []
+
+    // Loop through each file name in the array and read the corresponding file
+    for (let index = 0; index < data.length; index++) {
+        const item = data[index];
+        const myFile = await fs.promises.readFile(('blogdata/' + item))
+
+        // Parse the JSON data from the file and push it to the array of all blog data
+        allBlogs.push(JSON.parse(myFile))
+    }
+
+    // Return an object containing all blog data as props
+    return {
+        props: {
+            data: allBlogs
+        }
+    }
+}
+
 
 const Blog = (props) => {
     const [blogs, setBlogs] = useState(props.data)
@@ -39,7 +72,7 @@ const Blog = (props) => {
 
                                     </div>
                                     <div className="md:flex-grow" >
-                                        <p className="leading-relaxed text-base">{blogItem.content.substr(0, 400)}...</p>
+                                        <p className="leading-relaxed text-base">{blogItem.metadesc.substr(0, 400)}...</p>
 
                                         <div className="flex md:mt-4 mt-6">
 
