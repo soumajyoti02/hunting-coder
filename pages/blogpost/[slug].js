@@ -1,24 +1,42 @@
-import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 
 /*
 Step 1: Find the file corresponding to the slug
 Step 2: Populate them inside the page
+http://localhost:3000/api/getblog?slug=how-to-learn-javascript
+Context is an object that represents the request/response context.
 */
 
-const slug = () => {
-    const Router = useRouter()
-    const { slug } = Router.query
+// This exports a function that is executed on the server side when a page is requested
+export const getServerSideProps = async (context) => {
+    // Destructure the "slug" property from the "context.query" object
+    const { slug } = context.query;
+
+    // Fetch data from a custom API endpoint with a "slug" parameter
+    const res = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
+
+    // Extract the JSON data from the response
+    const myBlog = await res.json();
+
+    // Return an object with a "props" property that contains the fetched data
+    return {
+        props: {
+            myBlog,
+        },
+    };
+};
+
+
+const slug = (props) => { // Define a functional component called "slug"
+
+    const [blogs, setBlogs] = useState(props.myBlog)
     return (
         <>
             <div className='min-h-screen bg-gray-900 flex flex-col items-center w-screen'>
-                <h1 className='text-white font-bold text-4xl text-center mt-10'>Title {slug}</h1>
+                <h1 className='text-white font-bold text-4xl text-center mt-10'>{blogs && blogs.title}</h1>  {/* Display the title of the blog if it exists */}
                 <div className='w-11/12 m-auto bg-gray-800 p-4 mt-5 rounded-3xl'>
                     <p className='text-white text-lg font-mono '>
-                        JavaScript is a dynamic and versatile programming language that has become an essential tool for modern web development. It is used to create interactive web pages and applications that respond to user input and provide a rich and engaging user experience.
-                        One of the key features of JavaScript is its ability to be used both on the client-side and server-side. On the client-side, JavaScript is used to manipulate web pages in real-time, allowing for the creation of dynamic and interactive interfaces that respond to user input. On the server-side, JavaScript can be used with popular web frameworks like Node.js to build powerful and scalable web applications.
-                        JavaScript's popularity is due in part to its vast ecosystem of libraries and frameworks, including React, Angular, and Vue.js, which enable developers to build complex applications quickly and easily. Additionally, JavaScript's flexibility allows it to be used in conjunction with other web technologies like HTML and CSS to create highly customized user experiences.
-                        Despite its ubiquity in modern web development, JavaScript continues to evolve and improve, with new features and functionality being added to the language regularly. As such, it is a language that is well worth learning for any aspiring web developer looking to build dynamic and engaging web applications.
+                        {blogs && blogs.content} {/* Display the content of the blog if it exists */}
                     </p>
                 </div>
             </div>
@@ -26,4 +44,4 @@ const slug = () => {
     )
 }
 
-export default slug
+export default slug // Export the "slug" component for use in other modules
