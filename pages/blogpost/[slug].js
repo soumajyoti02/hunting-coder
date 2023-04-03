@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import * as fs from 'fs';
 import Head from 'next/head'
+import LoadingBar from 'react-top-loading-bar'
 
 /*
 To display data on a page for a specific slug: ---->
@@ -89,9 +90,32 @@ const Slug = (props) => { // Define a functional component called "Slug"
     }
     const [blogs, setBlogs] = useState(props.myBlog)
 
+    //Using the Top Loading Bar for Scrolling Progress
+    // Define a state variable 'loadingProgress' with initial value of 0
+    const [loadingProgress, setLoadingProgress] = useState(0)
+
+    // Set up an effect that runs once when the component is mounted, and adds an event listener to the window object
+    // The event listener will call the 'handleScroll' function whenever the user scrolls the page
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        // Return a cleanup function that removes the event listener when the component is unmounted
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    // Define the 'handleScroll' function, which calculates the user's scroll position as a percentage of the total scrollable height
+    // This percentage is then set as the new value of the 'loadingProgress' state variable
+    const handleScroll = () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        const scrolled = (winScroll / height) * 100
+        setLoadingProgress(scrolled)
+    }
+
+
     return (
         <>
             <Head><title>{blogs.title}</title></Head>
+            <LoadingBar color='#00c0ff' progress={loadingProgress} height={2.5} />
             <div className='min-h-screen bg-gray-900 flex flex-col items-center w-screen'>
                 <h1 className='text-white font-bold text-4xl text-center mt-10'>{blogs && blogs.title}</h1>  {/* Display the title of the blog if it exists */}
                 <div className='w-11/12 m-auto bg-gray-800 p-4 mt-5 rounded-3xl'>

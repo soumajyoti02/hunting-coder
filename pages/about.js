@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Spinner from '@/components/Spinner'
+import LoadingBar from 'react-top-loading-bar'
 
 const About = () => {
+
+	//Using the Top Loading Bar for Scrolling Progress
+	// Define a state variable 'loadingProgress' with initial value of 0
+	const [loadingProgress, setLoadingProgress] = useState(0)
+
+	// Set up an effect that runs once when the component is mounted, and adds an event listener to the window object
+	// The event listener will call the 'handleScroll' function whenever the user scrolls the page
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+		// Return a cleanup function that removes the event listener when the component is unmounted
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
+
+	// Define the 'handleScroll' function, which calculates the user's scroll position as a percentage of the total scrollable height
+	// This percentage is then set as the new value of the 'loadingProgress' state variable
+	const handleScroll = () => {
+		const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+		const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+		const scrolled = (winScroll / height) * 100
+		setLoadingProgress(scrolled)
+	}
+
 	return (
 		<>
 			<Head><title>About - Hunting Coder</title></Head>
+			<LoadingBar color='#00c0ff' progress={loadingProgress} height={2.5} />
 			<section className="text-gray-400 bg-gray-900 body-font min-h-screen">
 				<div className="container px-5 py-14 md:py-24 mx-auto flex flex-wrap">
 					<div className="flex flex-col text-center w-full mb-5 md:mb-10">
