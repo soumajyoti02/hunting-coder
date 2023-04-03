@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from '@/styles/Home.module.css'
 
 const HomeText = () => {
     return (
@@ -9,7 +10,7 @@ const HomeText = () => {
                 <p className={`text-white text-lg md:text-xl font-medium leading-relaxed md:pr-12`}>Welcome to our website, where we provide innovative coding solutions to help businesses and individuals achieve their goals. Our team of expert coders specializes in creating customized solutions that are tailored to your unique needs, whether you&apos;re looking to streamline your operations, automate processes, or create dynamic applications.
                     Whether you&apos;re a startup, a small business, or a large enterprise, we have the expertise and experience to help you succeed. Contact us today to learn more about our coding solutions and how we can help take your business to the next level.</p>
             </div>
-            <div className="w-full lg:w-1/2">
+            <div className={`${styles.card} w-full lg:w-1/2 shadow-none pb-10`}>
                 <img src="/homeimg.jpg" className="rounded-3xl" alt="my-images" />
             </div>
         </>

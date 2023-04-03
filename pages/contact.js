@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
+import Alert from '@/components/Alert'
 
 
 const Contact = () => {
@@ -8,6 +9,7 @@ const Contact = () => {
 	const [phone, setPhone] = useState('')
 	const [address, setAddress] = useState('')
 	const [desc, setDesc] = useState('')
+	const [alert, setAlert] = useState(false)
 
 	// Define a function called handleSubmit that will be called when a form is submitted
 	const handleSubmit = async (e) => {
@@ -28,10 +30,10 @@ const Contact = () => {
 			})
 
 			// Get the response body as text and log a success message to the console
-			const response = res.text()
+			const response = await res.text()
 
 			// Display an alert to the user with the message "Thanks For Contacting Us"
-			alert("Thanks For Contacting Us")
+			// alert("Thanks For Contacting Us")
 
 			// Reset the values of name, email, phone, address, and desc to empty strings
 			setName('')
@@ -39,11 +41,21 @@ const Contact = () => {
 			setPhone('')
 			setAddress('')
 			setDesc('')
+
+			setAlert(true)
+			setTimeout(() => {
+				setAlert(false);
+			}, 5500);
 		} catch (error) {
 			// If an error occurs, log an error message to the console
 			console.log(`Error occurred: ${error}`)
 		}
+
 	}
+	useEffect(() => {
+		console.log(alert)
+
+	}, [alert])
 
 
 	const handleChange = (e) => {
@@ -68,7 +80,10 @@ const Contact = () => {
 	return (
 		<>
 			<Head><title>Contact - Hunting Coder</title></Head>
+
+
 			<section className="text-gray-400 bg-gray-900 body-font relative min-h-screen">
+				<Alert message={alert} />
 				<div className="container px-5 py-24 mx-auto">
 					<div className="flex flex-col text-center w-full mb-12">
 						<h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Contact Us</h1>
@@ -111,9 +126,10 @@ const Contact = () => {
 									<button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
 								</div>
 								<div className="p-2 w-full pt-8 mt-8 border-t border-gray-800 text-center">
-									<a className="text-indigo-400">soumyabwn3@email.com</a>
-									<p className="leading-normal my-5">49 Smith St.
-										<br />Saint Cloud, MN 56301
+									<p className="text-white font-bold">Email Us</p>
+									<a href='https://mail.google.com/mail/?view=cm&to=soumyabwn3@gmail.com' target='_blank' className="text-indigo-400">soumyabwn3@email.com</a>
+									<p className="leading-normal my-5">Koulutie 93
+										<br />Ranua, Lapland 97700
 									</p>
 								</div>
 							</div>

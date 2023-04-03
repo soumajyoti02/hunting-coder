@@ -59,9 +59,26 @@ getStaticProps:
 export const getStaticPaths = async () => {
     return {
         paths: [
-            { params: { slug: 'how-to-learn-flask' } },
-            { params: { slug: 'how-to-learn-javascript' } },
-            { params: { slug: 'how-to-learn-nextjs' } }
+            { params: { slug: 'internet-of-things' } },
+            { params: { slug: 'mobile-network' } },
+            { params: { slug: 'future-of-ai' } },
+            { params: { slug: 'future-of-quantum-computing' } },
+            { params: { slug: 'dark-side-of-social-media' } },
+            { params: { slug: 'building-smart-cities' } },
+            { params: { slug: 'future-of-work' } },
+            { params: { slug: 'impact-of-big-data' } },
+            { params: { slug: 'cloud-computing' } },
+            { params: { slug: 'future-of-ai-in-health' } },
+            { params: { slug: 'cybersecurity-in-small-business' } },
+            { params: { slug: 'mobile-gaming' } },
+            { params: { slug: 'ai-in-job-market' } },
+            { params: { slug: 'benifits-of-remote-work' } },
+            { params: { slug: 'ethics-of-ai' } },
+            { params: { slug: 'importance-of-privacy' } },
+            { params: { slug: 'tech-transforming-workplace' } },
+            { params: { slug: 'rise-of-ecommerce' } },
+            { params: { slug: 'ai-healthcare' } },
+            { params: { slug: 'role-of-blockchain' } },
         ],
         fallback: true,
     }
@@ -90,6 +107,7 @@ const Slug = (props) => { // Define a functional component called "Slug"
     }
     const [blogs, setBlogs] = useState(props.myBlog)
 
+    // ---------------------------------------------------------------------------------------------------
     //Using the Top Loading Bar for Scrolling Progress
     // Define a state variable 'loadingProgress' with initial value of 0
     const [loadingProgress, setLoadingProgress] = useState(0)
@@ -110,15 +128,16 @@ const Slug = (props) => { // Define a functional component called "Slug"
         const scrolled = (winScroll / height) * 100
         setLoadingProgress(scrolled)
     }
+    // ---------------------------------------------------------------------------------------------------
 
 
     return (
         <>
             <Head><title>{blogs.title}</title></Head>
             <LoadingBar color='#00c0ff' progress={loadingProgress} height={2.5} />
-            <div className='min-h-screen bg-gray-900 flex flex-col items-center w-screen'>
+            <div className='min-h-screen bg-gray-900 flex flex-col items-center w-screen '>
                 <h1 className='text-white font-bold text-4xl text-center mt-10'>{blogs && blogs.title}</h1>  {/* Display the title of the blog if it exists */}
-                <div className='w-11/12 m-auto bg-gray-800 p-4 mt-5 rounded-3xl'>
+                <div className='w-11/12 m-auto bg-gray-800 p-4 mt-5 rounded-3xl mb-10'>
                     {blogs && <p className='text-white text-lg font-mono ' dangerouslySetInnerHTML={createMarkup(blogs.content)}></p>} {/* Display the content of the blog if it exists */}
                 </div>
             </div>

@@ -7,11 +7,13 @@ import styles from '@/styles/Home.module.css'
 import PopularBlog from '@/components/PopularBlog'
 import HomeText from '@/components/HomeText'
 import LoadingBar from 'react-top-loading-bar'
+import Testimonial from '@/components/Testimonial'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
+  // ---------------------------------------------------------------------------------------------------
   //Using the Top Loading Bar for Scrolling Progress
   // Define a state variable 'loadingProgress' with initial value of 0
   const [loadingProgress, setLoadingProgress] = useState(0)
@@ -32,6 +34,7 @@ export default function Home() {
     const scrolled = (winScroll / height) * 100
     setLoadingProgress(scrolled)
   }
+  // ---------------------------------------------------------------------------------------------------
 
 
   return (
@@ -51,17 +54,18 @@ export default function Home() {
           <header className="text-gray-400  body-font">
           </header>
 
-          <section className=' w-[90%] min-h-[90vh] max-w-screen-xl  mx-auto px-4 py-12 flex flex-wrap items-center justify-between overflow-hidden'>
+          <section className=' w-[90%] min-h-[90vh] max-w-screen-xl  mx-auto px-4  flex flex-wrap items-center justify-between overflow-hidden'>
             <HomeText />
           </section>
-          <section className="blogpage flex flex-wrap-reverse max-w-screen-xl lg:flex-wrap justify-center lg:justify-between items-center  mx-auto px-4 py-12 overflow-hidden">
-            <div className="w-full lg:w-1/2 flex justify-center items-center lg:pr-12 mb-12 lg:mb-0">
-              <img src="/blog.jpg" className="rounded-3xl h-auto lg:h-full w-full lg:w-auto mb-8" alt="my-images" />
+          <section className="blogpage flex flex-wrap-reverse max-w-screen-xl lg:flex-wrap justify-center lg:justify-between items-center  mx-auto px-4  overflow-hidden">
+            <div className={`${styles.card} w-full lg:w-1/2 flex justify-center items-center lg:pr-12 mb-8 lg:mb-0 shadow-none`}>
+              <img src="/blog.jpg" className="rounded-3xl h-auto lg:h-[90%] w-[90%] md:w-full lg:w-[100%] mb-8" alt="my-images" />
             </div>
             <div className="w-full lg:w-1/2 sm: mb-10 md:mb-6 lg:mb-0">
               <PopularBlog />
             </div>
           </section>
+          <Testimonial />
         </main >
 
       </div>

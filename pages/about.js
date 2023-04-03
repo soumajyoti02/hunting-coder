@@ -5,6 +5,7 @@ import LoadingBar from 'react-top-loading-bar'
 
 const About = () => {
 
+	// ---------------------------------------------------------------------------------------------------
 	//Using the Top Loading Bar for Scrolling Progress
 	// Define a state variable 'loadingProgress' with initial value of 0
 	const [loadingProgress, setLoadingProgress] = useState(0)
@@ -25,6 +26,7 @@ const About = () => {
 		const scrolled = (winScroll / height) * 100
 		setLoadingProgress(scrolled)
 	}
+	// ---------------------------------------------------------------------------------------------------
 
 	return (
 		<>
