@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as fs from 'fs';
+import Head from 'next/head'
 
 /*
 To display data on a page for a specific slug: ---->
@@ -90,6 +91,7 @@ const Slug = (props) => { // Define a functional component called "Slug"
 
     return (
         <>
+            <Head><title>{blogs.title}</title></Head>
             <div className='min-h-screen bg-gray-900 flex flex-col items-center w-screen'>
                 <h1 className='text-white font-bold text-4xl text-center mt-10'>{blogs && blogs.title}</h1>  {/* Display the title of the blog if it exists */}
                 <div className='w-11/12 m-auto bg-gray-800 p-4 mt-5 rounded-3xl'>

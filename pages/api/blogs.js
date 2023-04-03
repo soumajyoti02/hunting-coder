@@ -10,6 +10,7 @@ export default async function handler(req, res) {
 	the rest of the code.
 	*/
 	let data = await fs.promises.readdir("blogdata");
+	data = data.slice(0, parseInt(req.query.count)) // To Display the count numbers of blog in a page 
 
 	// Initialize variables for the current file and the list of all blogs
 	let myfile;

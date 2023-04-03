@@ -1,12 +1,14 @@
 import React from 'react'
+import Head from 'next/head'
 
 const About = () => {
 	return (
 		<>
-			<section className="text-gray-400 bg-gray-900 body-font h-screen">
-				<div className="container px-5 py-24 mx-auto flex flex-wrap">
-					<div className="flex flex-col text-center w-full mb-10">
-						<h1 className="sm:text-3xl text-2xl  title-font text-blue-50 font-bold">Innovative Coding Solutions</h1>
+			<Head><title>About - Hunting Coder</title></Head>
+			<section className="text-gray-400 bg-gray-900 body-font min-h-screen">
+				<div className="container px-5 py-14 md:py-24 mx-auto flex flex-wrap">
+					<div className="flex flex-col text-center w-full mb-5 md:mb-10">
+						<h1 className="sm:text-2xl text-2xl md:text-3xl  title-font text-blue-50 font-bold">Innovative Coding Solutions</h1>
 					</div>
 					<div className="flex flex-wrap -m-4">
 						<div className="p-4 md:w-1/3">
@@ -21,11 +23,6 @@ const About = () => {
 								</div>
 								<div className="flex-grow">
 									<p className="leading-relaxed text-base">At our company, we specialize in website development solutions that are tailored to your specific needs. Our team of expert coders has years of experience in creating beautiful, functional websites that help businesses succeed online. From simple brochure sites to complex e-commerce platforms, we have the expertise and knowledge to bring your website vision to life. We work closely with you throughout the development process to ensure that your website meets your business goals and exceeds your expectations.</p>
-									<a className="mt-3 text-indigo-400 inline-flex items-center">Learn More
-										<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-											<path d="M5 12h14M12 5l7 7-7 7"></path>
-										</svg>
-									</a>
 								</div>
 							</div>
 						</div>
@@ -42,11 +39,6 @@ const About = () => {
 								</div>
 								<div className="flex-grow">
 									<p className="leading-relaxed text-base">Process automation is one of our core specialties. We understand the importance of streamlining business processes to increase efficiency and productivity, which is why we offer a range of automation solutions that are designed to meet your unique needs. Our team of expert coders will work closely with you to identify areas of your business that can benefit from automation and create customized solutions that save you time and money.</p>
-									<a className="mt-3 text-indigo-400 inline-flex items-center">Learn More
-										<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-											<path d="M5 12h14M12 5l7 7-7 7"></path>
-										</svg>
-									</a>
 								</div>
 							</div>
 						</div>
@@ -63,12 +55,7 @@ const About = () => {
 									<h2 className="text-white text-lg title-font font-medium">Application Development</h2>
 								</div>
 								<div className="flex-grow">
-									<p className="leading-relaxed text-base">At our company, we specialize in website development solutions that are tailored to your specific needs. Our team of expert coders has years of experience in creating beautiful, functional websites that help businesses succeed online. From simple brochure sites to complex e-commerce platforms, we have the expertise and knowledge to bring your website vision to life. We work closely with you throughout the development process to ensure that your website meets your business goals and exceeds your expectations.</p>
-									<a className="mt-3 text-indigo-400 inline-flex items-center">Learn More
-										<svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-											<path d="M5 12h14M12 5l7 7-7 7"></path>
-										</svg>
-									</a>
+									<p className="leading-relaxed text-base">At our company, we specialize in website development solutions that are tailored to your specific needs. Our team of expert coders has years of experience in creating beautiful, functional websites that help businesses succeed online. From simple brochure sites to complex e-commerce platforms, we have the expertise and knowledge to bring your website vision to life. We closely with you throughout the development process to ensure that your website meets your business goals and exceeds your expectations.</p>
 								</div>
 
 							</div>
