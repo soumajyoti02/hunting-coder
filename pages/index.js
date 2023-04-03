@@ -26,10 +26,10 @@ export default function Home() {
         <header className="text-gray-400  body-font">
         </header>
 
-        <section className=' w-[90%] min-h-[90vh] max-w-screen-xl mx-auto px-4 py-12 flex flex-wrap items-center justify-between '>
+        <section className=' w-[90%] min-h-[90vh]  mx-auto px-4 py-12 flex flex-wrap items-center justify-between '>
           <HomeText />
         </section>
-        <section className="blogpage flex flex-wrap-reverse lg:flex-wrap justify-center lg:justify-between items-center max-w-screen-xl mx-auto px-4 py-12">
+        <section className="blogpage flex flex-wrap-reverse max-w-screen-xl lg:flex-wrap justify-center lg:justify-between items-center  mx-auto px-4 py-12">
           <div className="w-full lg:w-1/2 flex justify-center items-center lg:pr-12 mb-12 lg:mb-0">
             <img src="/blog.jpg" className="rounded-3xl h-auto lg:h-full w-full lg:w-auto mb-8" alt="my-images" />
           </div>
