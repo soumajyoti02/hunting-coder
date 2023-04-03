@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import * as fs from 'fs';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Head from 'next/head'
+import Spinner from '@/components/Spinner';
 
 /*
 Step 1: Collect all the files from the blogdata directory
@@ -89,11 +90,12 @@ const Blog = (props) => {
         <>
             <Head><title>Blog - Hunting Coder</title></Head>
             <div className="text-gray-400 bg-gray-900 body-font overflow-hidden min-h-screen">
+                {/* {loading && <Spinner />} */}
                 <InfiniteScroll
                     dataLength={blogs.length} //This is important field to render the next data
                     next={fetchData}
                     hasMore={props.allCount !== blogs.length}
-                    loader={<h4>Loading...</h4>}
+                    loader={<Spinner />}
                     endMessage={
                         <p style={{ textAlign: 'center' }}>
                             <b>Yay! You have seen it all</b>
@@ -106,14 +108,14 @@ const Blog = (props) => {
                         {
                             blogs.map((blogItem) => {
                                 return <div className="-my-8 divide-y-2 divide-gray-800" key={blogItem.id}>
-                                    <div className="py-8 flex flex-wrap md:flex-nowrap" >
-                                        <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col" >
+                                    <div className="py-8 flex flex-wrap md:justify-between md:flex-nowrap" >
+                                        <div className="md:w-[22rem] md:mb-0 mb-6 flex-shrink-0 flex flex-col" >
 
                                             <h2 className="sm:text-3xl text-2xl text-white font-medium title-font mb-2 md:w-[95%]"><Link href={`/blogpost/${blogItem.slug}`}>{blogItem.title}</Link></h2>
                                             <span className="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
 
                                         </div>
-                                        <div className="md:flex-grow" >
+                                        <div className="md:w-[50%]" >
                                             <p className="leading-relaxed text-base">{blogItem.metadesc.substr(0, 400)}...</p>
 
                                             <div className="flex md:mt-4 mt-6">

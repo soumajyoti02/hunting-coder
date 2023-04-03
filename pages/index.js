@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import PopularBlog from '@/components/PopularBlog'
 import HomeText from '@/components/HomeText'
+import LoadingBar from 'react-top-loading-bar'
 
 const inter = Inter({ subsets: ['latin'] })
 
